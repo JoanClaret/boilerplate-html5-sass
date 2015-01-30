@@ -1,0 +1,53 @@
+
+//------------------------------------
+//	$MIXINS
+//------------------------------------
+
+
+// Clearfix
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    contenteditable attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that are clearfixed.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+//
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+// .box-sizing(VALUE); (border-box, padding-box, content-box)
+@mixin box-sizing($boxsize: border-box) {
+	-webkit-box-sizing : $boxsize;
+	-moz-box-sizing : $boxsize;
+	-ms-box-sizing : $boxsize;
+	box-sizing : $boxsize;
+}
+
+
+
+//Creamos prefijos para todo dios
+//
+//   `@include vendor(border-radius, 4px);`
+//
+//
+@mixin vendor($property, $value...){
+    -webkit-#{$property}:$value;
+       -moz-#{$property}:$value;
+        -ms-#{$property}:$value;
+         -o-#{$property}:$value;
+            #{$property}:$value;
+}
+
