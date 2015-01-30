@@ -1,5 +1,5 @@
 //-----------------------------------
-//    STYLES
+//    $STYLES
 //-----------------------------------
 
 @import "lib/variables.scss";
@@ -13,3 +13,49 @@
 @import "lib/reset.scss";
 
 @import "main.scss";
+
+//-----------------------------------
+//    $BREAKPOINTS
+//-----------------------------------
+
+@media (max-width: $screen-xs-max) { }
+@media (min-width: $screen-sm-min) { }
+@media (max-width: $screen-sm-max) { }
+@media (min-width: $screen-md-min) { }
+@media (max-width: $screen-md-max) { }
+@media (min-width: $screen-lg-min) { }
+
+
+//----------------------------------
+//    $HEADINGS
+//----------------------------------
+
+h1,h2,h3,h4,h5{
+	font-weight:300;
+}
+h1{
+	font-size: $font-size-h1;
+}
+h2{
+	font-size: $font-size-h2;
+}
+h3{
+	font-size: $font-size-h3;
+}
+h4{
+	font-size: $font-size-h4;
+}
+h5{
+	font-size: $font-size-h5;
+}
+h1, h2, h3, h4, h5{
+	padding:1em 0 .5em 0;
+}
+
+
+//-----------------------------------
+//    $MAIN STYLES
+//-----------------------------------
+
+
+
