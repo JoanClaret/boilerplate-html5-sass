@@ -54,6 +54,27 @@
   }
 }
 
+// Responsive visibility
+// More easily include all the states for Responsive visibility helpers.
+// [converter] $parent hack
+
+@mixin responsive-visibility($parent) {
+  #{$parent} {
+    display: block !important;
+  }
+  table#{$parent}  { display: table; }
+  tr#{$parent}     { display: table-row !important; }
+  th#{$parent},
+  td#{$parent}     { display: table-cell !important; }
+}
+
+// [converter] $parent hack
+@mixin responsive-invisibility($parent) {
+  #{$parent} {
+    display: none !important;
+  }
+}
+
 
 // Clearfix
 //
