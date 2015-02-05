@@ -14,7 +14,7 @@
 //   /* Styles */
 //  }
 //
-//  $breakpoint: select the device type: phone, tablet, laptop, desktop. Sizes are defined in _variables.scss
+//  $breakpoint: select the device type: bp-small, bp-medium, bp-large, bp-huge. Sizes are defined in _variables.scss
 //  $query1: select min or max width
 //
 //
@@ -23,7 +23,7 @@
 //
 //  .hello {
 //    color: red;
-//      @include breakpoint(desktop, min) {
+//      @include breakpoint(bp-huge, min) {
 //      color:blue;
 //    }
 //  }
@@ -40,18 +40,20 @@
 
 @mixin breakpoint($breakpoint, $query1: min) {
 
-  @if $breakpoint == desktop {
-     @media (#{$query1}-width: $screen-lg-min) { @content; }
-  }
-   @else if $breakpoint == laptop {
-     @media (#{$query1}-width: $screen-md-min) { @content; }
-  }
-    @else if $breakpoint == tablet {
-     @media (#{$query1}-width: $screen-sm-min) { @content; }
-  }
-   @else if $breakpoint == phone {
-     @media (#{$query1}-width: $screen-xs-min) { @content; }
-  }
+	@if $breakpoint == bp-small {
+		@media (#{$query1}-width: $screen-xs-min) { @content; }
+	}
+	@else if $breakpoint == bp-medium {
+		@media (#{$query1}-width: $screen-sm-min) { @content; }
+	}
+	@else if $breakpoint == bp-large {
+		@media (#{$query1}-width: $screen-md-min) { @content; }
+	}
+
+	@else if $breakpoint == bp-huge {
+		@media (#{$query1}-width: $screen-lg-min) { @content; }
+	}
+
 }
 
 // Responsive visibility
