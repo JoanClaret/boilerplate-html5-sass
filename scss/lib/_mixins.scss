@@ -167,10 +167,12 @@
 }
 
 // .box-shadow(HORIZONTAL VERTICAL BLUR COLOR))
-@mixin box-shadow($shadow: 0 1px 3px rgba(0,0,0,.25)) {
-	-webkit-box-shadow : $shadow;
-	box-shadow : $shadow;
+@mixin box-shadow( $h: 10px , $v: 10px , $b: 0px , $s: 0px , $c: #000000 ) {
+    -webkit-box-shadow: $h $v $b $s $c;
+ 	-moz-box-shadow: $h $v $b $s $c;
+ 	box-shadow: $h $v $b $s $c;
 }
+
 
 // .drop-shadow(HORIZONTAL, VERTICAL, BLUR, ALPHA);
 @mixin drop-shadow($x-axis: 0, $y-axis: 1px, $blur: 2px, $alpha: 0.1) {
