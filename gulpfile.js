@@ -2,14 +2,17 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var minifyCSS = require('gulp-minify-css');
 var gutil = require('gulp-util');
+var sourcemaps = require('gulp-sourcemaps');
 var iconfont = require('gulp-iconfont');
 var iconfontCss = require('gulp-iconfont-css');
 var fontName = 'Icons';
 
 gulp.task('sass', function() {
 	return gulp.src('scss/styles.scss')
+  .pipe(sourcemaps.init())
 	.pipe(sass({compress: false}).on('error', gutil.log))
 	.pipe(minifyCSS({keepBreaks: false}))
+  .pipe(sourcemaps.write())
 	.pipe(gulp.dest('css'));
 });
 
