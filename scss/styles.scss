@@ -12,7 +12,10 @@
 
 @import "lib/reset.scss";
 
+@import "lib/icons.scss";
+
 @import "main.scss";
+
 
 //-----------------------------------
 //    $BREAKPOINTS
@@ -57,5 +60,19 @@ h1, h2, h3, h4, h5{
 //    $MAIN STYLES
 //-----------------------------------
 
+*{
+	@include box-sizing();
+}
 
+body{
+	font-family:$basefont;
+	color:$text-color;
+}
 
+section.container{
+	span{
+		@extend .icon-rocknroll;
+	}
+}
+
+// ...

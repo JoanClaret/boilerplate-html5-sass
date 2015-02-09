@@ -2,11 +2,11 @@
 
 ### What is?
 This is a repository based on Joan Leon's Boilerplate (https://github.com/nucliweb/nucliweb-Boilerplate).
-The idea is to have an initial base to start new projects.
+The idea is to have an initial base to start new projects, and keep updating with new usefull features.
 
 ### Include
 
-* package.json (with gulp, gulp-sass, gulp-minify-css and gulp-util)
+* package.json (with gulp, gulp-sass, gulp-minify-css, gulp-util, gulp-iconfont, gulp-iconfont-css)
 * gulpfile.js with some simple tasks 
 * Twitter boostratp's grid
 * SASS variables configuration file (scss/lib/variables.scss)
