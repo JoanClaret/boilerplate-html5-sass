@@ -11,25 +11,33 @@ var notify = require('gulp-notify');				// Sweet notifications on your desktop
 var plumber = require('gulp-plumber');				// Prevent pipe breaking caused by errors from gulp plugins
 
 
-// Error handling
-
-var onError = function (err) {
-	gutil.beep();
-	console.log( err );
-	return notify().write(err);
-};
-
-// Tasks
-
 gulp.task('sass', function() {
+
+	// Error handling
+	var onError = function(err) {
+		notify.onError({
+			title:		"Gulp",
+			subtitle:	"Failure!",
+			message:	"Error: <%= error.message %>",
+			sound:		"Beep"
+		})(err);
+		this.emit('end');
+	};
+
 	return gulp.src('scss/styles.scss')
-	.pipe( plumber({ errorHandler: onError }) )
+	.pipe(plumber({errorHandler: onError}))
 	.pipe(sourcemaps.init())
 	.pipe(sass({compress: false}).on('error', gutil.log))
 	.pipe(minifyCSS({keepBreaks: false}))
 	.pipe(sourcemaps.write())
 	.pipe(gulp.dest('css'))
 	.pipe(livereload())
+	// .pipe(notify({
+	// 	title: 'Gulp',
+	// 	subtitle: 'success',
+	// 	message: 'Sass task',
+	// 	sound: "Pop"
+	// }));
 });
 
 
