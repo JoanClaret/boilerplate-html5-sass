@@ -1,24 +1,36 @@
 var gulp = require('gulp');							// La madre del cordero
 var sass = require('gulp-sass');  					// SASS compiler
 var minifyCSS = require('gulp-minify-css'); 		// CSS minify
-var gutil = require('gulp-util');           		// Utility functions for gulp plugins
+var gutil = require('gulp-util');           		// Utility functions for gulp plugins (for example beep on errors)
 var sourcemaps = require('gulp-sourcemaps');		// Identify source selectors with browser
 var iconfont = require('gulp-iconfont');			// Generate icon fonts from several SVG icons
 var iconfontCss = require('gulp-iconfont-css');		// Generate necessary css files to use iconfont
 var fontName = 'Icons';								
 var livereload = require('gulp-livereload');		// Automatically reload browser when saving a file
+var notify = require('gulp-notify');				// Sweet notifications on your desktop
+var plumber = require('gulp-plumber');				// Prevent pipe breaking caused by errors from gulp plugins
+
+
+// Error handling
+
+var onError = function (err) {
+	gutil.beep();
+	console.log( err );
+	return notify().write(err);
+};
+
+// Tasks
 
 gulp.task('sass', function() {
 	return gulp.src('scss/styles.scss')
+	.pipe( plumber({ errorHandler: onError }) )
 	.pipe(sourcemaps.init())
 	.pipe(sass({compress: false}).on('error', gutil.log))
 	.pipe(minifyCSS({keepBreaks: false}))
 	.pipe(sourcemaps.write())
 	.pipe(gulp.dest('css'))
-	.pipe(livereload());
+	.pipe(livereload())
 });
-
-
 
 
 gulp.task('watch', ['sass'], function() {
@@ -26,6 +38,7 @@ gulp.task('watch', ['sass'], function() {
 	gulp.watch('scss/**/*.scss', ['sass']);
 });
  
+
 gulp.task('iconfont', function(){
 	gulp.src(['images/svg/*.svg']) // svg folder
 	.pipe(iconfontCss({

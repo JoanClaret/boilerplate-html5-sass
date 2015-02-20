@@ -8,7 +8,6 @@ $baseline :           $baselineheight;
 $gutterwidth :        24px;
 $pagemaxwitdh :       80%;
 $radius :             3px;
-
 $border-box:		 true;
 
 //-----------------------------------
@@ -64,8 +63,6 @@ $linkcolor          : $brand-primary;
 $linkcolorhover     : darken($linkcolor, 10);
 $linkcolorvisited   : $brand-primary;
 $linkcolorfocus     : darken($linkcolorvisited, 10);
-
-
 
 
 // Social colors
@@ -144,7 +141,6 @@ $grid-float-breakpoint:     $screen-sm-min;
 
 //** Point at which the navbar begins collapsing.
 $grid-float-breakpoint-max: ($grid-float-breakpoint - 1);
-
 
 
 //-----------------------------------

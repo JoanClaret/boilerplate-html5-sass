@@ -4,11 +4,11 @@
 This is a repository based on Joan Leon's Boilerplate (https://github.com/nucliweb/nucliweb-Boilerplate).
 The idea is to have an initial base to start new projects, and keep updating with new usefull features.
 
-### Includes
+### Include
 
-* package.json (with gulp, gulp-sass, gulp-minify-css, gulp-util, gulp-iconfont, gulp-iconfont-css, gulp-livereload)
+* package.json (with gulp, gulp-sass, gulp-minify-css, gulp-util, gulp-iconfont, gulp-iconfont-css, gulp-livereload, gulp-notify, gulp-plumber)
 * gulpfile.js with some simple tasks 
-* Twitter boostratp's grid
+* Twitter bootstrap's grid
 * SASS variables configuration file (scss/lib/variables.scss)
 * A bunch of SASS mixins (scss/lib/mixins.scss)
 * Debug stylesheet (scss/debug.scss)
