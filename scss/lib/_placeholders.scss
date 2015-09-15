@@ -9,18 +9,18 @@
 }
 
 
-  /**
-  * Centrar y dar un ancho máximo igual a $pagemaxwidth.
-  */
+/**
+ * Centrar y dar un ancho máximo igual a $pagemaxwidth.
+ */
 %max-width {
 	margin-left:auto;
 	margin-right:auto;
 	max-width: $pagemaxwitdh;
 }
 
-  /**
-  * The ghost, nudged to maintain perfect centering
-  */
+/**
+ * The ghost, nudged to maintain perfect centering
+ */
 %vcenter {
 	&:before {
 		content: '';
@@ -30,35 +30,56 @@
 	}
 }
 
-  /**
-  * Escondemos el texto solo VISUALMENTE
-  */
+/**
+ * Center vertical with flexbox
+ */
+%center-vertical {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+/**
+ * Space between with flexbox
+ */
+%space-between {
+  display:flex;
+  justify-content: space-between;
+}
+
+/**
+ * Escondemos el texto solo VISUALMENTE
+ */
 %hide-text {
 	text-indent: 100%;
 	white-space: nowrap;
 	overflow: hidden;
 }
 
-  /**
-  * Escondemos el texto de VISUALMENTE y SCREENREADERS
-  */
+/**
+ * Escondemos el texto de VISUALMENTE y SCREENREADERS
+ */
 %hidden {
 	display : none !important;
 	visibility : hidden;
 }
 
 
-  /**
-  * Escondemos pero mantenemos layout.
-  */
+/**
+ * Escondemos pero mantenemos layout.
+ */
 %invisible {
 	visibility : hidden;
 }
 
 
-  /**
-  * Visualmente escondido, pero se puede detectar con teclado (focus).
-  */
+/**
+ * Visualmente escondido, pero se puede detectar con teclado (focus).
+ */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
 	position : static;
@@ -70,10 +91,10 @@
 }
 
 
-  /**
-  * Clear floats.
-  * http://bit.ly/1e3YaBH
-  */
+/**
+ * Clear floats.
+ * http://bit.ly/1e3YaBH
+ */
 %clearfix {
 	&:after{
         content:"";
