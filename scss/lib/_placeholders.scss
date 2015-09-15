@@ -31,27 +31,6 @@
 }
 
 /**
- * Center vertical with flexbox
- */
-%center-vertical {
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  align-items: center;
-}
-
-/**
- * Space between with flexbox
- */
-%space-between {
-  display:flex;
-  justify-content: space-between;
-}
-
-/**
  * Escondemos el texto solo VISUALMENTE
  */
 %hide-text {

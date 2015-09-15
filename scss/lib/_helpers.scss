@@ -1,3 +1,32 @@
+/** 
+ *  FLEX ALIGNMENTS
+ */
+ 
+// Aligner (container)
+.aligner {
+  display: flex;
+}
+.aligner-space-between{
+  display: flex;
+  justify-content: space-between;
+}
+.aligner-center-vertical{
+  display: flex;
+  align-items: center;
+}
+
+// Aligner (item)
+.aligner-item {
+
+}
+.aligner-item-top {
+  align-self: flex-start;
+}
+.aligner-item-bottom {
+  align-self: flex-end;
+}
+
+
 
 // Visibility utilities
 // Note: Deprecated .visible-xs, .visible-sm, .visible-md, and .visible-lg as of v3.2.0
