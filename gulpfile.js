@@ -9,6 +9,7 @@ var fontName = 'Icons';
 var livereload = require('gulp-livereload');		// Automatically reload browser when saving a file
 var notify = require('gulp-notify');				// Sweet notifications on your desktop
 var plumber = require('gulp-plumber');				// Prevent pipe breaking caused by errors from gulp plugins
+var autoprefixer 	= require('gulp-autoprefixer'); // Prefixes form old browsers
 
 
 gulp.task('sass', function() {
@@ -28,16 +29,20 @@ gulp.task('sass', function() {
 	.pipe(plumber({errorHandler: onError}))
 	.pipe(sourcemaps.init())
 	.pipe(sass({compress: false}).on('error', gutil.log))
+	.pipe(autoprefixer({
+            browsers: ['last 3 versions'],
+            cascade: false
+        }))
 	.pipe(minifyCSS({keepBreaks: false}))
 	.pipe(sourcemaps.write())
 	.pipe(gulp.dest('css'))
 	.pipe(livereload())
-	// .pipe(notify({
-	// 	title: 'Gulp',
-	// 	subtitle: 'success',
-	// 	message: 'Sass task',
-	// 	sound: "Pop"
-	// }));
+	.pipe(notify({
+		title: 'Gulp',
+		subtitle: 'success',
+		message: 'Sass compiled',
+		sound: "Pop"
+	}));
 });
 
 
@@ -60,3 +65,10 @@ gulp.task('iconfont', function(){
 	}))
 	.pipe(gulp.dest('fonts/'));
 });
+
+
+/**
+ *  Default tasks
+ */
+
+gulp.task('default', ['sass']);
