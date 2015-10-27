@@ -1,5 +1,7 @@
 var gulp = require('gulp');							// La madre del cordero
 var sass = require('gulp-sass');  					// SASS compiler
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 var minifyCSS = require('gulp-minify-css'); 		// CSS minify
 var gutil = require('gulp-util');           		// Utility functions for gulp plugins (for example beep on errors)
 var sourcemaps = require('gulp-sourcemaps');		// Identify source selectors with browser
@@ -9,7 +11,6 @@ var fontName = 'Icons';
 var livereload = require('gulp-livereload');		// Automatically reload browser when saving a file
 var notify = require('gulp-notify');				// Sweet notifications on your desktop
 var plumber = require('gulp-plumber');				// Prevent pipe breaking caused by errors from gulp plugins
-var autoprefixer 	= require('gulp-autoprefixer'); // Prefixes form old browsers
 
 
 gulp.task('sass', function() {
@@ -29,13 +30,9 @@ gulp.task('sass', function() {
 	.pipe(plumber({errorHandler: onError}))
 	.pipe(sourcemaps.init())
 	.pipe(sass({compress: false}).on('error', gutil.log))
-	.pipe(autoprefixer({
-            browsers: ['last 3 versions'],
-            cascade: false
-        }))
 	.pipe(minifyCSS({keepBreaks: false}))
 	.pipe(sourcemaps.write())
-	.pipe(gulp.dest('css'))
+	.pipe(gulp.dest('public'))
 	.pipe(livereload())
 	.pipe(notify({
 		title: 'Gulp',
@@ -52,6 +49,10 @@ gulp.task('watch', ['sass'], function() {
 });
  
 
+/**
+ *  Iconfont
+ */
+
 gulp.task('iconfont', function(){
 	gulp.src(['images/svg/*.svg']) // svg folder
 	.pipe(iconfontCss({
@@ -64,6 +65,26 @@ gulp.task('iconfont', function(){
 		fontName: fontName
 	}))
 	.pipe(gulp.dest('fonts/'));
+});
+
+
+/**
+ *  Javascript files
+ */
+
+gulp.task('js', function () {
+
+    return gulp.src([
+    './js/*.js'])
+    .pipe(concat('bundle.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('public'))
+    .pipe(notify("Javascript is built"));
+
+});
+
+gulp.task('watch-js', ['js'], function () {
+    gulp.watch('./js/*.js', ['js']);
 });
 
 
