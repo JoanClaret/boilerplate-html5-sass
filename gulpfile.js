@@ -30,8 +30,8 @@ gulp.task('sass', function() {
 	.pipe(plumber({errorHandler: onError}))
 	.pipe(sourcemaps.init())
 	.pipe(sass({compress: false}).on('error', gutil.log))
-	.pipe(minifyCSS({keepBreaks: false}))
-	.pipe(sourcemaps.write())
+	//.pipe(minifyCSS({keepBreaks: false}))
+	//.pipe(sourcemaps.write())
 	.pipe(gulp.dest('public'))
 	.pipe(livereload())
 	.pipe(notify({
@@ -59,7 +59,7 @@ gulp.task('iconfont', function(){
 		fontName: fontName,
 		path: 'scss/lib/icons-template/_icons.scss', // The template path
 		targetPath: '../scss/lib/_icons.scss', // The path where the (S)CSS file should be saved, relative to the path used in gulp.dest()
-		fontPath: '../../fonts/' // Directory of font files relative to generated (S)CSS file (optional, defaults to ./).
+		fontPath: '../fonts/' // Directory of font files relative to generated (S)CSS file (optional, defaults to ./).
 	}))
 	.pipe(iconfont({
 		fontName: fontName
